@@ -32,7 +32,7 @@ mkdir ${name}
 cp ./fasta/${name}_test_aln.fasta ./${name}
 
 cd ./${name}
-## if running on a cluster, dist quota exceeded , try
+## if running on a cluster, disk quota exceeded , try
 ## export TORCH_HOME=/lscratch/$SLURM_JOB_ID
 
 python ../esm/scripts/extract.py esm2_t33_650M_UR50D ${name}_test_aln.fasta emb_esm2_1280 --repr_layers 0 32 33 --include per_tok
