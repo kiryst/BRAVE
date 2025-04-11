@@ -2,7 +2,7 @@
 
 # Function to display usage
 usage() {
-    echo "Usage: $0 --antibody_name=<name>"
+    echo "Usage: $0 --antibody_name=<name> --input=<input_file>"
     exit 1
 }
 
@@ -10,6 +10,7 @@ usage() {
 while [[ "$#" -gt 0 ]]; do
     case $1 in
         --antibody_name=*) name="${1#*=}"; shift ;;
+        --input=*) input_file="${1#*=}"; shift ;;
         *) usage ;;
     esac
 done
@@ -23,10 +24,10 @@ fi
 echo "${name}"
 ## align to reference aligment
 
-mafft --quiet --add ./fasta/${name}_testing.fasta ./fasta/${name}_aln.fasta > ./fasta/${name}_test_aligned2Reference.fasta
+mafft --quiet --add "${input_file}" ./fasta/${name}_aln.fasta > ./fasta/${name}_test_aligned2Reference.fasta
 
 ## save just the test antibody aligned 
-R --no-echo --no-restore --no-save --args "./fasta/${name}_test_aligned2Reference.fasta" "./fasta/${name}_testing.fasta" "./fasta/${name}_test_aln.fasta" < save_test_aln.R
+R --no-echo --no-restore --no-save --args "./fasta/${name}_test_aligned2Reference.fasta" "${input_file}" "./fasta/${name}_test_aln.fasta" < save_test_aln.R
 
 mkdir ${name}
 cp ./fasta/${name}_test_aln.fasta ./${name}
@@ -46,7 +47,7 @@ python convert_2_column_csv.py
 
 cd ../../
 
-R --no-echo --no-restore --no-save --args "./fasta/${name}_testing.fasta" "${name}/emb_esm2_1280/" "${name}_output.csv" "./DATA/${name}.RData" < make_rda_test.R
+R --no-echo --no-restore --no-save --args "${input_file}" "${name}/emb_esm2_1280/" "${name}_output.csv" "./DATA/${name}.RData" < make_rda_test.R
 
 
 rm -r ${name}
