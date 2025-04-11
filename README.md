@@ -5,32 +5,33 @@ A Highly Accurate Method for Predicting HIV-1 Antibody Resistance Utilizing Prot
 
 ## Installation
 
-BRAVE runs in R code. 
-It requires installed 
-MAFFT software (https://mafft.cbrc.jp/alignment/software/)
-ESM2 https://github.com/facebookresearch/esm/blob/main/README.md, specifically esm-extract esm2_t33_650M_UR50D
+BRAVE runs in R code, using python, MAFFT and ESM2 
 
 ### Create CoViPaD Environment
 
 ```sh
-conda create --name BRAVE
+conda create --name BRAVE python=3.9 r-base=4.2
 conda activate BRAVE 
-conda install -c r r
-conda install -c bioconda r-bio3d
-conda install -c r r-rcurl
-conda install -c r r-jsonlite
-conda install -c cidermole jdk8 (Linux) or conda install -c cyclus java-jdk (Mac)
-conda install -c bioconda mafft
-conda install -c bioconda bioconductor-biostrings
-conda install -c r r-data.table
-conda install -c r r-foreach
-conda install -c r r-doparallel
-conda install -c r r-rocr
-conda install -c conda-forge r-geosphere
-conda install -c conda-forge readline
-conda install python
-conda install pytorch torchvision torchaudio -c pytorch
+conda install pip
+pip install torch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1
 conda install pandas
+conda install -c conda-forge r-tidyverse r-pROC r-data.table r-caret r-randomforest r-glmnet r-dplyr
+conda install -c bioconda mafft
+
+git clone https://github.com/facebookresearch/esm.git
+cd esm
+pip install .
+
+Open an R session within the environment:
+R
+install.packages("BiocManager")
+BiocManager::install("nestedcv")
+BiocManager::install("Biostrings")
+
+Exit the R session:
+quit()
+
+cd ../
 
 Run BRAVE in command line
 
