@@ -16,22 +16,23 @@ conda install pip
 pip install torch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1
 conda install pandas
 conda install -c conda-forge r-tidyverse r-pROC r-data.table r-caret r-randomforest r-glmnet r-dplyr
-conda install -c bioconda mafft
-
+conda install -c bioconda mafft=7.490
+conda install -c conda-forge libxml2 zlib xz
 git clone https://github.com/facebookresearch/esm.git
 cd esm
 pip install .
+cd ../
+
 
 Open an R session within the environment:
 R
 install.packages("BiocManager")
 BiocManager::install("nestedcv")
-BiocManager::install("Biostrings")
+BiocManager::install(c("Biostrings", "XVector", "GenomeInfoDb"))
 
 Exit the R session:
 quit()
 
-cd ../
 
 Run BRAVE in command line
 
