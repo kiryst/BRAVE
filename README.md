@@ -10,27 +10,28 @@ BRAVE runs in R code, using python, MAFFT and ESM2
 ### Create CoViPaD Environment
 
 ```sh
-conda create --name BRAVE python=3.9 r-base=4.2
+conda create -n BRAVE python=3.10 r-base=4.4.3 gxx_linux-64=11.3.0 numpy=1.24 -c conda-forge
 conda activate BRAVE 
 conda install pip
 pip install torch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1
 conda install pandas
-conda install -c conda-forge r-tidyverse r-pROC r-data.table r-caret r-randomforest r-glmnet r-dplyr
+conda install -c conda-forge r-pROC r-data.table r-caret r-randomforest r-glmnet r-dplyr
 conda install -c bioconda mafft=7.490
-conda install -c conda-forge libstdcxx-ng
 conda install -c conda-forge libxml2 zlib xz
+
 git clone https://github.com/facebookresearch/esm.git
 cd esm
 pip install .
 cd ../
-export LD_LIBRARY_PATH=$(conda info --base)/envs/brave_env/lib:$LD_LIBRARY_PATH
-export LD_PRELOAD=$(conda info --base)/envs/brave_env/lib/libstdc++.so.6
 
 Open an R session within the environment:
 R
 install.packages("BiocManager")
+install.packages("RcppArmadillo")
+install.packages("Rfast", verbose = TRUE)
 BiocManager::install("nestedcv")
-BiocManager::install(c("Biostrings", "XVector", "GenomeInfoDb"))
+BiocManager::install("Biostrings")
+BiocManager::install("tidyverse")
 
 Exit the R session:
 quit()
