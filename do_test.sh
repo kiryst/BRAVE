@@ -15,13 +15,14 @@ while [[ "$#" -gt 0 ]]; do
     esac
 done
 
-# Check if the name variable is set
-if [ -z "$name" ]; then
+# Check if both name and input_file variables are set
+if [ -z "$name" ] || [ -z "$input_file" ]; then
     usage
 fi
 
-##name="b12"
-echo "${name}"
+# Debugging: Print the parsed arguments
+echo "Antibody Name: ${name}"
+echo "Input File: ${input_file}"
 ## align to reference aligment
 
 mafft --quiet --add "${input_file}" ./fasta/${name}_aln.fasta > ./fasta/${name}_test_aligned2Reference.fasta
