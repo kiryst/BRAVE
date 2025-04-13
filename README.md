@@ -16,6 +16,7 @@ conda install pip
 pip install torch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1
 conda install pandas
 conda install -c conda-forge r-pROC r-data.table r-caret r-randomforest r-glmnet r-dplyr
+conda install -c conda-forge r-ranger
 conda install -c bioconda mafft=7.490
 conda install -c conda-forge libxml2 zlib xz
 conda install -c conda-forge libstdcxx-ng
