@@ -18,6 +18,9 @@ conda install pandas
 conda install -c conda-forge r-pROC r-data.table r-caret r-randomforest r-glmnet r-dplyr
 conda install -c bioconda mafft=7.490
 conda install -c conda-forge libxml2 zlib xz
+conda install -c conda-forge libstdcxx-ng
+
+export LD_PRELOAD=$CONDA_PREFIX/lib/libstdc++.so.6
 
 git clone https://github.com/facebookresearch/esm.git
 cd esm
