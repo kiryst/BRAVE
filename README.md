@@ -43,18 +43,18 @@ Input arguments:
 1. bNAb,choose one of 33 bNAbs (10-1074, 2F5, 2G12, 35O22, 3BNC117, 4E10, 8ANC195, b12, CH01, DH270.1, DH270.5, DH270.6, HJ16, NIH45-46, PG16, PG9, PGDM1400, PGT121, PGT128, PGT135, PGT145, PGT151, VRC01, VRC03, VRC07, VRC13, VRC26.08, VRC26.25, VRC29.03, VRC34.01, VRC38.01, VRC-CH31, VRC-PG04)
 
 2. HIV-1 Env sequence(s) in FASTA format. 
-
+3. Trained model in Rdata format
 
 Run: 
 
-./do_test.sh --antibody_name=<name> --input=<input_file>
+./do_test.sh --antibody_name=<name> --input=<input_file> --rdata=./DATA/<name>.RData
 
 
 Results will be saved in ${name}_output.csv. For each sequence in the input test file it will predict either sensitive or resistant and corresponding probabilities.
 
 For example:
 
-./do_test.sh --antibody_name=b12 --input=./fasta/b12_testing.fasta
+./do_test.sh --antibody_name=b12 --input=./fasta/b12_testing.fasta --rdata=./DATA/b12.RData
 
 
 Contact:
