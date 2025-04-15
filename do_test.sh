@@ -26,6 +26,8 @@ echo "Antibody Name: ${name}"
 echo "Input File: ${input_file}"
 echo "RData File: ${rdata_file}"
 ## align to reference aligment
+conda activate BRAVE
+export LD_PRELOAD=$CONDA_PREFIX/lib/libstdc++.so.6
 
 mafft --quiet --add "${input_file}" ./fasta/${name}_aln.fasta > ./fasta/${name}_test_aligned2Reference.fasta
 
