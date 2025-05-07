@@ -24,8 +24,9 @@ fi
 # Debugging: Print the parsed arguments
 echo "Antibody Name: ${name}"
 echo "Input File: ${input_file}"
+echo "RData File: ${rdata_file}"
 ## align to reference aligment
-
+conda activate BRAVE
 export LD_PRELOAD=$CONDA_PREFIX/lib/libstdc++.so.6
 
 mafft --quiet --addfull "${input_file}" --keeplength ./fasta/${name}_aln.fasta > ./fasta/${name}_test_aligned2Reference.fasta
@@ -55,4 +56,3 @@ R --no-echo --no-restore --no-save --args "${input_file}" "${name}/emb_esm2_1280
 
 
 ##rm -r ${name}
-
