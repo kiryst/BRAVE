@@ -12,7 +12,7 @@ library(glmnet)
 
 args <- commandArgs(trailingOnly=TRUE)
 
-#args <- c("b12_testing.fasta", "/data/SBIS/tatsiana/LBUM/test/b12/emb_esm2_1280/", "b12_output.csv","b12.RData")
+#args <- c("./fasta/PGT121_testing.fasta", "./PGT121/emb_esm2_1280/", "PGT121_output.csv","/data/SBIS/Mohammed/new_results/for_paper/ranger_training/PGT121_training.RData")
 
 args[1]   # input fasta file of test sequences
 
@@ -43,7 +43,7 @@ test<-t(predictors_b12)
 
 rownames(test)<-NULL
 colnames(test) <- c(1:dim(test)[[2]])
-preds <- predict(res, newdata = test, type = "response")
+preds <- predict(res, newdata = test, type = "raw")
 preds_prob <- predict(res, newdata = test, type = "prob")
 # Create a data frame with virus_id and prediction
 output_df <- data.frame(

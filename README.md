@@ -47,14 +47,14 @@ Input arguments:
 
 Run: 
 
-./do_test.sh --antibody_name=<name> --input=<input_file>
+./do_test.sh --antibody_name=<name> --input=<input_file> --rdata=<RData_file>
 
 
 Results will be saved in ${name}_output.csv. For each sequence in the input test file it will predict either sensitive or resistant and corresponding probabilities.
 
 For example:
 
-./do_test.sh --antibody_name=b12 --input=./fasta/b12_testing.fasta
+./do_test.sh --antibody_name=b12 --input=./fasta/b12_testing.fasta --rdata=./DATA/b12_training.RData
 
 
 Contact:
