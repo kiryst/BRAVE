@@ -40,6 +40,13 @@ BiocManager::install("tidyverse")
 Exit the R session:
 quit()
 
+### Data Availability
+The DATA/ folder has been excluded from this repository due to size constraints.
+You can download the training and associated data files from our Zenodo record:
+
+https://zenodo.org/records/15366851
+
+Once downloaded, place the files inside a local DATA/ directory to use with BRAVE.
 
 Run BRAVE in command line
 
