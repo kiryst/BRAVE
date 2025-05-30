@@ -5,7 +5,7 @@ A Highly Accurate Method for Predicting HIV-1 Antibody Resistance Utilizing Prot
 
 ## Installation
 
-BRAVE runs in R code, using python, MAFFT and ESM2 
+BRAVE runs in R code, using python, MAFFT and ESM2. It was successfully tested on Biowulf HPC.
 
 ### Create CoViPaD Environment
 
