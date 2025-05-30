@@ -13,7 +13,10 @@ BRAVE runs in R code, using python, MAFFT and ESM2
 conda create -n BRAVE python=3.10 r-base=4.4.3 gxx_linux-64=11.3.0 numpy=1.24 -c conda-forge
 conda activate BRAVE 
 conda install pip
-pip install torch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1
+If using GPU:
+pip install torch==1.12.1 
+If using CPU only (slower):
+pip install torch==1.12.1+cpu -f https://download.pytorch.org/whl/cpu/torch_stable.html
 conda install pandas
 conda install -c conda-forge r-pROC r-data.table r-caret r-randomforest r-glmnet r-dplyr
 conda install -c conda-forge r-ranger
